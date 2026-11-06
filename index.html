@@ -49,6 +49,17 @@
     .about {background:var(--paper)}
     .about .rooted {margin-top:30px;padding:20px 0 0;border-top:1px solid var(--line);color:#60737b;font:italic 1.12rem/1.55 Georgia,serif}
     .signature {font:italic 1.13rem/1.6 Georgia,serif;color:var(--sage);margin-top:22px}
+    /* Native, keyboard-accessible expansion keeps longer stories easy to explore. */
+    .read-more {margin-top:7px}
+    .read-more summary {display:inline-flex;align-items:center;gap:11px;cursor:pointer;list-style:none;color:var(--sage);font-weight:650;padding:9px 2px 9px 0;border-bottom:1px solid transparent}
+    .read-more summary::-webkit-details-marker {display:none}
+    .read-more summary::after {content:"+";display:inline-grid;place-items:center;width:1.45em;height:1.45em;border:1px solid currentColor;border-radius:50%;font-weight:400;line-height:1}
+    .read-more[open] summary::after {content:"−"}
+    .read-more summary:hover {border-bottom-color:var(--sage)}
+    .read-more .show-less {display:none}
+    .read-more[open] .show-more {display:none}
+    .read-more[open] .show-less {display:inline}
+    .read-more .expanded-copy {padding-top:18px}
     .services {background:var(--mist);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .center {text-align:center;max-width:735px;margin:0 auto 35px}
     .center p {color:var(--muted)}
@@ -108,7 +119,6 @@
           <p>When someone is nearing the end of life, a calm presence, a listening ear, and a little understanding can mean so much. Appalachian Way Home offers compassionate support for individuals and the people who love them.</p>
           <div class="actions">
             <a class="button" href="#introduction">Get to know Appalachian Way Home</a>
-            <a class="simple-link" href="#contact">Reach out to Alisha</a>
           </div>
         </div>
         <img src="data:image/webp;base64,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" width="460" height="307" alt="Appalachian Way Home logo showing moonlit mountains">
@@ -124,9 +134,14 @@
         </div>
         <div class="copy">
           <p>End of life can bring many questions and emotions. You may be thinking ahead for yourself, caring for someone you love, or simply trying to understand what comes next. Whatever brought you here, you deserve the time and space to be heard.</p>
-          <p>Appalachian Way Home offers compassionate, non-medical end-of-life guidance and companionship. My hope is to provide a steady presence for individuals and families as they move through this part of life. That may mean listening to what is on your heart, helping make room for important conversations, creating meaningful moments, offering comfort, or simply being present when words are no longer needed.</p>
-          <p>I believe death is a natural part of life, and the way we approach it deserves tenderness, dignity, honesty, and respect. There is no single right way to experience this journey. Each person has their own wishes, each family has its own history, and those differences matter.</p>
-          <p>No one should have to feel alone in facing the end of life. My hope is to walk alongside you and your loved ones with patience, understanding, and care, honoring what matters most to you.</p>
+          <details class="read-more">
+            <summary><span class="show-more">Read the full introduction</span><span class="show-less">Show less</span></summary>
+            <div class="expanded-copy">
+              <p>Appalachian Way Home offers compassionate, non-medical end-of-life guidance and companionship. My hope is to provide a steady presence for individuals and families as they move through this part of life. That may mean listening to what is on your heart, helping make room for important conversations, creating meaningful moments, offering comfort, or simply being present when words are no longer needed.</p>
+              <p>I believe death is a natural part of life, and the way we approach it deserves tenderness, dignity, honesty, and respect. There is no single right way to experience this journey. Each person has their own wishes, each family has its own history, and those differences matter.</p>
+              <p>No one should have to feel alone in facing the end of life. My hope is to walk alongside you and your loved ones with patience, understanding, and care, honoring what matters most to you.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -136,15 +151,21 @@
         <div>
           <div class="eyebrow">About Me</div>
           <h2 id="about-title">My roots are here in these mountains.</h2>
-          <p class="rooted">Western North Carolina · Eight generations · One home</p>
+          <p class="rooted">Eight generations · One home</p>
         </div>
         <div class="copy">
           <p>Some things are rooted deeper than words can express. For me, those roots run through the mountains of Western North Carolina, where my family's lineage stretches back eight generations.</p>
-          <p>These mountains have always represented something special to me: a sense of belonging, a connection to those who came before us, and the quiet understanding that home is more than a place. It is where our stories begin, where our memories live, and where we are held by the things that matter most.</p>
-          <p>That deep connection to family, community, and the generations before me is what inspired me to create Appalachian Way Home. I have learned how much it means for a person to feel remembered, respected, and surrounded by care. I want to carry those values into the support I offer others.</p>
-          <p>As an end-of-life doula, I hope to be a caring, steady presence for people and families during one of life's most tender times. Sometimes there are stories to share or wishes to talk through. Sometimes the most meaningful thing I can offer is to sit beside someone and simply listen.</p>
-          <p>I would be honored to walk alongside you and your loved ones with an open heart, a gentle presence, and deep respect for the journey you are on.</p>
-          <p class="signature">With gratitude and an open heart,<br>Alisha Jamerson</p>
+          <details class="read-more">
+            <summary><span class="show-more">Read Alisha's story</span><span class="show-less">Show less</span></summary>
+            <div class="expanded-copy">
+              <p>These mountains have always represented something special to me: a sense of belonging, a connection to those who came before us, and the quiet understanding that home is more than a place. It is where our stories begin, where our memories live, and where we are held by the things that matter most.</p>
+              <p>I have 15 years of experience as a registered nurse serving Western North Carolina.</p>
+              <p>My family's deep roots in these mountains inspired me to create Appalachian Way Home. I want to carry that same respect for every person's story into the care and support I offer others.</p>
+              <p>As an end-of-life doula, I hope to offer practical help, compassionate guidance, and a steady presence during one of life's most tender times. Each person and family is different, and I want to meet them where they are.</p>
+              <p>I would be honored to walk alongside you and your loved ones with an open heart, a gentle presence, and deep respect for the journey you are on.</p>
+              <p class="signature">With gratitude and an open heart,<br>Alisha Jamerson</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -152,7 +173,7 @@
     <section class="section services" id="support" aria-labelledby="support-title">
       <div class="wrap">
         <div class="center">
-          <div class="eyebrow">Compassionate &amp; Practical Support</div>
+          <div class="eyebrow">Compassionate & Practical Support</div>
           <h2 id="support-title">What I Offer</h2>
           <p>Every person's journey is unique, and the support they need may change along the way. My goal is to offer compassionate, practical assistance tailored to you and your loved ones.</p>
         </div>
